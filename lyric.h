@@ -5,15 +5,15 @@
 
 #include <string>
 #include <vector>
+#include <cassert>
 
 class Lyric {
 	private:
 		struct line {
 			// offset() may cause negative time, thus not uint32_t
 			int32_t time;
-			uint32_t index;
 			std::string content;
-		}
+		};
 
 		std::vector<line> lines;
 		
@@ -23,19 +23,28 @@ class Lyric {
 	public:
 		// Create new Lyric 
 		Lyric();
+        
+        // Return amount of saved lines
+		size_t size() const;
 
-		// Basic feature, DO NOT pass index larger than size() - 1 !!!
-		int32_t get_time(uint32_t index) const;
+		// Basic feature, DO NOT pass index larger than count() - 1 !!!
+		int32_t get_time(size_t index) const {
+            assert(index < lines.size() && "Index out of bound!");
+            return lines[index].time;
+        }
 
 		// Basic feature, return -1 if failed
-		int32_t get_index(int32_t int ms) const;
+		size_t get_index(int32_t ms) const;
+
+		// Basic feature. Return blank string if nothing found. DO NOT pass index larger than count() - 1 !!!
+		const std::string& get_line_by_index(size_t index) const {
+            assert(index < lines.size() && "Index out of bound!");
+            return lines[index].content;
+        }
 
 		// Basic feature. Return blank string if nothing found.
-		std::string& get_line_by_index(uint32_t index);
-
-		// Basic feature. Return blank string if nothing found.
-		std::string& get_line_by_time(int32_t ms) const {
-			int32_t index = get_index(ms);
+		const std::string& get_line_by_time(int32_t ms) const {
+			size_t index = get_index(ms);
 			return (index != -1) ? get_line_by_index(index) : EMPTY_STRING;
 		}
 
@@ -43,13 +52,11 @@ class Lyric {
 		int32_t offset(int32_t ms);
 		
 		// Add line to a Lyric, liblrc will automatically sort 
-		add(int32_t time, std::string content);
+		int32_t add(int32_t time, std::string content);
 
 		// Delete line from a Lyric by index
-		del(uint32_t index);
-
-		// Return amount of saved lines
-		uint32_t size() const;
+		int32_t del(size_t index);
+        
 };
 
 #endif
