@@ -24,28 +24,28 @@ class Lyric {
 		Lyric();
         
 		// Return amount of saved lines
-		size_t size() const;
+		uint32_t size() const;
 
 		// Basic feature, DO NOT pass index larger than count() - 1 !!!
-		int32_t get_time(size_t index) const;
+		int32_t get_time(int32_t index) const;
 
 		// Basic feature, return -1 if failed
 		int32_t get_index(int32_t ms) const;
 
 		// Basic feature. Return blank string if nothing found. DO NOT pass index larger than count() - 1 !!!
-		const std::string& get_line_by_index(size_t index) const;
+		const std::string& get_line_by_index(int32_t index) const;
 
 		// Basic feature. Return blank string if nothing found.
 		const std::string& get_line_by_time(int32_t ms) const;
 
-		// return 0 if nothing bad, 1 if failed, 2 if negative time appears
+		// return 0 if nothing bad, 1 if nothing changed (to a blank container), and nothing to err?
 		int32_t offset(int32_t ms);
 		
 		// Add line to a Lyric, liblrc will automatically sort 
 		int32_t add(int32_t time, std::string content);
 
 		// Delete line from a Lyric by index
-		int32_t del(size_t index);
+		int32_t del(int32_t index);
         
 };
 

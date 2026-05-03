@@ -3,7 +3,7 @@
 
 Lyric::Lyric();
 
-size_t Lyric::size() const {
+uint32_t Lyric::size() const {
 	return lines.size();
 }
 
@@ -29,7 +29,11 @@ const std::string& Lyric::get_line_by_time(int32_t ms) const {
 	return (index != -1) ? get_line_by_index(index) : EMPTY_STRING;
 }
 
-int32_t Lyric::offset(int32_t ms);
+int32_t Lyric::offset(int32_t ms) {
+	if (lines.empty()) return 1;
+	for (uint32_t i = 0; i < lines.size(); i++) lines[i].time += ms;
+	return 0;
+}
 
 int32_t Lyric::add(int32_t time, std::string content);
 
