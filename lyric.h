@@ -5,7 +5,6 @@
 
 #include <string>
 #include <vector>
-#include <cassert>
 
 class Lyric {
 	private:
@@ -31,7 +30,7 @@ class Lyric {
 		int32_t get_time(size_t index) const;
 
 		// Basic feature, return -1 if failed
-		size_t get_index(int32_t ms) const;
+		int32_t get_index(int32_t ms) const;
 
 		// Basic feature. Return blank string if nothing found. DO NOT pass index larger than count() - 1 !!!
 		const std::string& get_line_by_index(size_t index) const;
