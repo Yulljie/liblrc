@@ -24,29 +24,20 @@ class Lyric {
 		// Create new Lyric 
 		Lyric();
         
-        // Return amount of saved lines
+		// Return amount of saved lines
 		size_t size() const;
 
 		// Basic feature, DO NOT pass index larger than count() - 1 !!!
-		int32_t get_time(size_t index) const {
-            assert(index < lines.size() && "Index out of bound!");
-            return lines[index].time;
-        }
+		int32_t get_time(size_t index) const;
 
 		// Basic feature, return -1 if failed
 		size_t get_index(int32_t ms) const;
 
 		// Basic feature. Return blank string if nothing found. DO NOT pass index larger than count() - 1 !!!
-		const std::string& get_line_by_index(size_t index) const {
-            assert(index < lines.size() && "Index out of bound!");
-            return lines[index].content;
-        }
+		const std::string& get_line_by_index(size_t index) const;
 
 		// Basic feature. Return blank string if nothing found.
-		const std::string& get_line_by_time(int32_t ms) const {
-			size_t index = get_index(ms);
-			return (index != -1) ? get_line_by_index(index) : EMPTY_STRING;
-		}
+		const std::string& get_line_by_time(int32_t ms) const;
 
 		// return 0 if nothing bad, 1 if failed, 2 if negative time appears
 		int32_t offset(int32_t ms);
