@@ -27,7 +27,7 @@ const std::string& Lyric::get_line_by_time(int32_t ms) const {
 	return get_line_by_index(get_index(ms));
 }
 
-int32_t Lyric::offset(int32_t ms) {
+void Lyric::offset(int32_t ms) {
 	for (uint32_t i = 0; i < lines.size(); i++) lines[i].time += ms;
 }
 
