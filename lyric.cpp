@@ -31,6 +31,18 @@ int32_t Lyric::offset(int32_t ms) {
 	for (uint32_t i = 0; i < lines.size(); i++) lines[i].time += ms;
 }
 
-int32_t Lyric::add(int32_t time, std::string content);
+int32_t Lyric::add(int32_t time, std::string content) {
+	lines.push_back({time, std::move(content)});
+	m_is_sorted = false;
+	return 0;
+}
 
-int32_t Lyric::del(int32_t index);
+int32_t Lyric::del(int32_t index) {
+	if (static_cast<uint32_t>(index) >= lines.size()) return -1;
+	lines.erase(lines.begin() + index);
+	return 0;
+}
+
+int32_t sort();
+
+void force_sorted();
