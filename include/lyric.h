@@ -18,7 +18,7 @@ class Lyric {
 		std::vector<line> lines;
 		
 		// For err use
-		static const std::string EMPTY_STRING;
+		static const std::string EMPTY_STRING  ;
 		
 		bool m_is_sorted = true;
 	public:

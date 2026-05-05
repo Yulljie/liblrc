@@ -1,6 +1,7 @@
 #include <algorithm>
-#include <cassert>
 #include "lyric.h"
+
+const std::string Lyric::EMPTY_STRING = "";
 
 Lyric::Lyric() = default;
 
@@ -9,7 +10,6 @@ uint32_t Lyric::size() const {
 }
 
 int32_t Lyric::get_time(int32_t index) const {
-	assert(index < lines.size() && "Index out of bound!");
 	return lines[index].time;
 }
 
