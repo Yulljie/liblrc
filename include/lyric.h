@@ -18,7 +18,7 @@ class Lyric {
 		std::vector<line> lines;
 		
 		// For err use
-		static const std::string EMPTY_STRING  ;
+		static const std::string EMPTY_STRING;
 		
 		bool m_is_sorted = true;
 	public:
@@ -28,7 +28,7 @@ class Lyric {
 		// Return amount of saved lines
 		uint32_t size() const;
 
-		// Basic feature, this will NOT check m_is_sorted, DO NOT pass index larger than count() - 1 !!!
+		// Basic feature, this will NOT check m_is_sorted, 0 <= index < size(), invalid index may cause undefined bahavior!!!
 		int32_t get_time(int32_t index) const;
 
 		// Basic feature, return -1 if failed, this will check m_is_sorted.
