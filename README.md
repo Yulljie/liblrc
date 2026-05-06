@@ -1,6 +1,6 @@
 # Liblrc
 
-A WIP .lrc lyric parser library written in C++
+A lightweight .lrc lyric parser library written in C++, still WIP.
 
 ## Progress
 
