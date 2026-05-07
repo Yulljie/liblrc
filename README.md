@@ -40,3 +40,4 @@ text = lrc.get_line_by_index(idx); // ハローワールド
 text = lrc.get_line_by_time(12000); // Hello World
 
 ```
+For more detailed usage, see [examples/engine_test.cpp](examples/engine_test.cpp).
