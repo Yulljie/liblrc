@@ -45,7 +45,7 @@ int32_t Lyric::del(int32_t index) {
 }
 
 int32_t Lyric::sort() {
-	if (m_is_sorted || lines.size() < 2) return 0;
+	if (lines.size() < 2) return 0;
 	std::sort(lines.begin(), lines.end(), [](const line& a, const line& b){return a.time < b.time;});
 	m_is_sorted = true;
 	return 0;
