@@ -26,7 +26,9 @@ class Lyric {
   * `content`: Content of the line itself.
 
 `lines`: Vector `lines` stores line in one timeline (usually a song).
+
 `EMPTY_STRING`: Some interfaces may return this if error occured.
+
 `m_is_sorted`: Used to mark if `lines` is sorted. Some interfaces may modify or check this.
 
 ## Interfaces
