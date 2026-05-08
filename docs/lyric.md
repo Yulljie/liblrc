@@ -15,11 +15,8 @@ class Lyric {
 			int32_t time;
 			std::string content;
 		};
-
 		std::vector<line> lines;
-		
 		static const std::string EMPTY_STRING;
-		
 		bool m_is_sorted = true;
 }
 ```
