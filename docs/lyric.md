@@ -79,6 +79,42 @@ void Lyric::force_sorted();
 lrc.force_sorted();
 ```
 
-### Read
+### Query
+
+`size()`: Return the size of the vector `lines`. This can be used for boundary check.
+```cpp
+uint32_t Lyric::vector();
+// Usage:
+lrc.size();
+```
+
+`get_time()`: Return `time` by index. This will not check `m_is_sorted`. Also, check if the index is valid before invoke this, a invalid index will cause undefined behavior.
+```cpp
+int32_t Lyric::get_time(int32_t index) const;
+// Usage:
+lrc.get_time(2);
+```
+
+`get_index()`: Return the index by time. This will check `m_is_sorted`. When `m_is_sorted` is `false`, `lines` is empty or the given time is earlier than the first line (index0), this will return `-1`.
+```cpp
+int32_t Lyric::get_index(int32_t ms);
+// Usage:
+lrc.get_index(5000);
+
+`get_line_by_index()`: Return the line by index. This will not check `m_is_sorted`. This will return a empty string `""` if a invalid index given.
+```cpp
+const std::string& get_line_by_index(int32_t index) const;
+// Usage:
+lrc.get_line_by_index(2);
+```
+
+`get_line_by_time()`: Return the line by time. This is implemented as `get_line_by_index(get_index())`, return empty string `""` if invalid time given.
+```cpp
+const std::string& get_line_by_time(int32_t ms) const;
+// Usage:
+get_line_by_time(5000);
+```
+
+
 
 
