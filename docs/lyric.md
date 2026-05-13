@@ -100,6 +100,7 @@ lrc.get_time(2);
 int32_t Lyric::get_index(int32_t ms);
 // Usage:
 lrc.get_index(5000);
+```
 
 `get_line_by_index()`: Return the line by index. This will not check `m_is_sorted`. This will return a empty string `""` if a invalid index given.
 ```cpp
